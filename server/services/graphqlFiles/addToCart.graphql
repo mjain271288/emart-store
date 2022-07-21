@@ -1,0 +1,7 @@
+mutation{
+  addToCart(userId:{{{userId}}},productId:{{{productId}}},  quantity:{{{quantity}}}){
+    userId,
+    productId,
+    quantity
+  }
+}

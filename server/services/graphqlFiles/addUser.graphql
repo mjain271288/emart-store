@@ -1,0 +1,11 @@
+mutation{
+  addUser(userInput:{firstName:"{{{firstName}}}", lastName:"{{{lastName}}}", email:"{{{email}}}", mobileNo:"{{{mobileNo}}}", address:"{{{address}}}"})
+  {
+    Id
+    firstName
+    lastName
+    email
+    mobileNo
+    address
+  }
+}

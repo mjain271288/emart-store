@@ -1,0 +1,10 @@
+query{
+  searchUser(firstName:"{{{firstName}}}"){
+    Id
+    firstName
+    lastName
+    email
+    mobileNo
+    address
+  }
+}

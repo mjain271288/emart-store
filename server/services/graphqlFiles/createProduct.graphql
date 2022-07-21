@@ -1,0 +1,21 @@
+mutation{
+  createProduct(productInput:{type:"{{{type}}}",
+    name:"{{{name}}}",
+    description:"{{{description}}}",
+    assertUrl:["{{{assertUrl}}}"],
+    thumbnail:"{{{thumbnail}}}",
+    price:{{{price}}},
+    currency:"{{{currency}}}"
+  }){
+    type,
+    name,
+    description,
+    assertUrl,
+    thumbnail,
+    price,
+    currency,
+    isActive,
+    createdDate,
+    updatedDate
+  }
+}

@@ -1,0 +1,7 @@
+mutation{
+  editProductQuantity(userId:{{{userId}}},productId:{{{productId}}},quantity:{{{quantity}}}){
+    userId,
+    productId,
+    quantity
+  }
+}

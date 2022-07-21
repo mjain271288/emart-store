@@ -1,0 +1,703 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "E-mart Api",
+        "contact": {
+            "email": "mrmayankjain@gmail.com"
+        },
+        "license": {
+            "name": "Beta 1.0",
+            "url": ""
+        }
+    },
+    "schemes": ["http","https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "basePath": "/api",
+    "paths" : {
+        "/searchProduct/{filterText}" : {
+            "get" : {
+                "summary" : "Get all products and search specific product and add into cart.",
+                "tags": ["Product"],
+                "description": "Get all products and search specific product and add into cart.",
+                "produces": ["application/json"],
+                "parameters": [ {
+                    "name": "filterText",
+                    "in": "path",
+                    "description": "Product name",
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/searchProdResponse"
+
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/createProduct" : {
+            "post" : {
+                "summary" : "Add a new product in emart store.",
+                "tags": ["Product"],
+                "description": "Add a new product in emart store.",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product details",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createProduct"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/createProductResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/createUser" : {
+            "post" : {
+                "summary" : "Add a user for order shipment",
+                "tags": ["Users"],
+                "description": "Add a user for order shipment",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "User informations",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/createUserResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/addToCart" : {
+            "post" : {
+                "summary" : "Add the selected product into cart for checkout.",
+                "tags": ["Cart"],
+                "description": "Add the selected product into cart for checkout.",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product,User and Qty",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/addToCard"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/addToCartResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/cartItems/{userId}" : {
+            "get" : {
+                "summary" : "Display user cart products for checkout",
+                "tags": ["Cart"],
+                "description": "Display user cart products for checkout",
+                "produces": ["application/json"],
+                "parameters": [ {
+                    "name": "userId",
+                    "in": "path",
+                    "required": true,
+                    "description": "Display user cart products for checkout",
+                    "type": "string",
+                    "default":17811
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/cartItemsResponse"
+
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/editQty/{productId}" : {
+            "put" : {
+                "summary" : "update product qty.",
+                "description": "update product qty.",
+                "tags": ["Cart"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "product for update quantity",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/editQtyInCart"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/{productId}" : {
+            "delete" : {
+                "summary" : "Remove the product from cart",
+                "description": "Remove the product from cart",
+                "tags": ["Product"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Remove the product from cart",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/addToCartResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "searchProdResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "description": "Status of the response",
+                    "example": 200
+                },
+                "productId": {
+                     "type": "integer",
+                     "example":"1000004"
+                },
+                "name": {
+                    "type": "string",
+                    "example":"dailyware"
+                },
+                "description": {
+                    "type": "string",
+                    "example":"product 1 description"
+                },
+                "currency": {
+                    "type": "string",
+                    "example":"euro"
+                },
+                "price": {
+                    "type": "float",
+                    "example":"20"
+                },
+                "assertUrl":{
+                    "type":"array",
+                    "example":[
+                        "product1.jpg",
+                        "product2.jpg",
+                        "product3.jpg"
+                    ]
+                },
+                "thumbnail":{
+                    "type":"string",
+                    "example":"product1thumbnail.jpg"
+
+                },
+                "isActive":{
+                    "type":"string"
+                }
+            },
+            "example":{
+                "statusCode":"200",
+                "data":[
+                    {
+                        "name": "Product 1",
+                        "productId": 1000004,
+                        "type":"dailyware",
+                        "description": "Product 1 Description",
+                        "assertUrl": [
+                            "product1.jpg",
+                            "product2.jpg",
+                            "product3.jpg"
+                        ],
+                        "thumbnail": "product1thumbnail.jpg",
+                        "price": 20,
+                        "currency": "euro",
+                        "isActive": true
+                    },
+                    {
+                        "name": "Product 2",
+                        "productId": 1000005,
+                        "type":"dailyware",
+                        "description": "Product 2 Description",
+                        "assertUrl": [
+                            "product2.jpg",
+                            "product2.jpg",
+                            "product2.jpg"
+                        ],
+                        "thumbnail": "product2thumbnail.jpg",
+                        "price": 20,
+                        "currency": "euro",
+                        "isActive": true
+                    }
+
+                ]
+            }
+        },
+        "cartItemsResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "description": "Status of the response",
+                    "example": 200
+                },
+                "user":{
+                    "Id":{
+                        "type":"integer",
+                        "example":1
+                    },
+                    "firstName":{
+                        "type":"string",
+                        "example":"John"
+                    },
+                    "lastName":{
+                        "type":"string",
+                        "example":"Oliver"
+                    },
+                    "email":{
+                        "type":"string",
+                        "example":"jhnOliver@gmail.com"
+                    },
+                    "mobileNo":{
+                        "type":"string",
+                        "example":"0099999"
+                    },
+                    "address":{
+                        "type":"string",
+                        "example":"dlf"
+                    }
+                },
+                "cartItems":{
+                "productId": {
+                     "type": "integer",
+                     "example":"1000004"
+                },
+                "name": {
+                    "type": "string",
+                    "example":"dailyware"
+                },
+                "description": {
+                    "type": "string",
+                    "example":"product 1 description"
+                },
+                "currency": {
+                    "type": "string",
+                    "example":"euro"
+                },
+                "price": {
+                    "type": "float",
+                    "example":"20"
+                },
+                "assertUrl":{
+                    "type":"array",
+                    "example":[
+                        "product1.jpg",
+                        "product2.jpg",
+                        "product3.jpg"
+                    ]
+                },
+                "thumbnail":{
+                    "type":"string",
+                    "example":"product1thumbnail.jpg"
+
+                },
+                "isActive":{
+                    "type":"string"
+                }
+            }
+            },
+            "example":{
+                "statusCode":"200",
+                "data":{
+                    "user": {
+                        "Id": 9461,
+                        "firstName": "Mayank",
+                        "lastName": "Jain",
+                        "email": "test@gmail.com",
+                        "mobileNo": "99999999",
+                        "address": "dlf"
+                    },
+                    "cartItems": [
+                        {
+                            "productDetails": {
+                                "productId": 112762,
+                                "name": "mayank",
+                                "type": "test",
+                                "description": "new Product",
+                                "assertUrl": [
+                                    "test.png"
+                                ],
+                                "thumbnail": "test.png",
+                                "price": 200,
+                                "currency": "euro",
+                                "isActive": true
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "addToCartResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "description": "Status of the response",
+                    "example": 200
+                },
+                "userId": {
+                     "type": "integer",
+                     "example":"1001"
+                },
+                "productId": {
+                    "type": "integer",
+                    "example":"1000001"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "example":"1"
+                }
+            },
+            "example":{
+                "statusCode":"200",
+                "data":[
+                    {
+                        "userId": 1001,
+                        "productId": 1000001,
+                        "quantity": 1
+                    },
+                    {
+                        "userId": 1001,
+                        "productId": 1000002,
+                        "quantity": 2
+                    },
+                    {
+                        "userId": 1001,
+                        "productId": 1000003,
+                        "quantity": 3
+                    }
+                ]
+            }
+        },
+        "createProductResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "description": "Status of the response",
+                    "example": 200
+                },
+                "name": {
+                     "type": "string",
+                     "example":"Product 1"
+                },
+                "type": {
+                    "type": "string",
+                    "example":"dailyware"
+                },
+                "description": {
+                    "type": "string",
+                    "example":"product 1 description"
+                },
+                "assertUrl": {
+                    "type": "object",
+                    "example":"['product1.jpg']"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "example":"product1thumbnail.jpg"
+                },
+                "price": {
+                    "type": "integer",
+                    "example":"100"
+                },
+                "currency": {
+                    "type": "string",
+                    "example":"euro"
+                },
+                "isActive": {
+                    "type": "string",
+                    "example":"true"
+                }
+            },
+            "example":{
+                "statusCode":"200",
+                "data": [
+                    {
+                      "name": "Product 1",
+                      "productId": 1000004,
+                      "type": "dailyware",
+                      "description": "Product 1 Description",
+                      "assertUrl": [
+                        "product1.jpg",
+                        "product2.jpg",
+                        "product3.jpg"
+                      ],
+                      "thumbnail": "product1thumbnail.jpg",
+                      "price": 20,
+                      "currency": "euro",
+                      "isActive": "true"
+                    }
+                ]
+            }
+        },
+        "addToCard": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                    "type":"integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "editQtyInCart": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "createProduct": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type":"string",
+                    "example":"Product 2"
+                },
+                "type": {
+                    "type": "string",
+                    "example":"dailyware"
+                },
+                "description": {
+                    "type": "string",
+                    "example":"product 2 description"
+                },
+                "assertUrl": {
+                    "type": "array",
+                    "example":["product1.jpg"]
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "example":"product1thumbnail.jpg"
+                },
+                "price": {
+                    "type": "integer",
+                    "example":"100"
+                },
+                "currency": {
+                    "type": "string",
+                    "example":"euro"
+                },
+                "isActive":{
+                    "type": "string",
+                    "example":"true"
+                }
+            }
+        },
+        "createUser": {
+            "type": "object",
+            "properties": {
+                "firstName":{
+                    "type":"string",
+                    "example":"John"
+                },
+                "lastName":{
+                    "type":"string",
+                    "example":"Oliver"
+                },
+                "email":{
+                    "type":"string",
+                    "example":"jhnOliver@gmail.com"
+                },
+                "mobileNo":{
+                    "type":"string",
+                    "example":"0099999"
+                },
+                "address":{
+                    "type":"string",
+                    "example":"dlf"
+                }
+            }
+        },
+        "createUserResponse": {
+            "type": "object",
+            "properties": {
+                "firstName":{
+                    "type":"string",
+                    "example":"John"
+                },
+                "lastName":{
+                    "type":"string",
+                    "example":"Oliver"
+                },
+                "email":{
+                    "type":"string",
+                    "example":"jhnOliver@gmail.com"
+                },
+                "mobileNo":{
+                    "type":"string",
+                    "example":"0099999"
+                },
+                "address":{
+                    "type":"string",
+                    "example":"dlf"
+                }
+            },
+            "example":{
+                "statusCode":"200",
+                "data": [
+                    {
+                        "Id": 9461,
+                        "firstName": "John",
+                        "lastName": "Oliver",
+                        "email": "John@gmail.com",
+                        "mobileNo": "99999999",
+                        "address": "dlf"
+                    }
+                ]
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "example":{
+                "statusCode":"200"
+            }
+
+        }
+    }
+}

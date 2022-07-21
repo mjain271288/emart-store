@@ -1,0 +1,47 @@
+[
+    {
+      "type": "Smartphones",
+      "name": "POVA 3",
+      "description": "Tecno POVA 3 (Electric Blue, 6GB RAM, 128GB Storage)| 7000mAh Battery |33W Fast Charger | 6.9 FHD+ Display | 90 Hz Refresh Rate | 50MP Triple Camera | Helio G88 Gaming Processor",
+      "assertUrl": [
+        "https://google.com/POVA3.jpg"
+      ],
+      "thumbnail": "https://google.com/POVA3.jpg",
+      "price": 100,
+      "currency": "euro",
+      "isActive": true,
+      "productId": 393081,
+      "createdDate": "2022-07-21T14:11:43.313Z",
+      "updatedDate": "2022-07-21T14:11:43.313Z"
+    },
+  {
+      "type": "Wrist Watches",
+      "name": "Daniel Klein Analog",
+      "description": "Daniel Klein Analog Black Dial Men's Watch-DK11599-5",
+      "assertUrl": [
+        "https://google.com/DanielKleinAnalog.jpg"
+      ],
+      "thumbnail": "https://google.com/DanielKleinAnalog.jpg",
+      "price": 200,
+      "currency": "euro",
+      "isActive": true,
+      "productId": 393082,
+      "createdDate": "2022-07-21T14:11:43.313Z",
+      "updatedDate": "2022-07-21T14:11:43.313Z"
+    },
+  {
+      "type": "Backpacks",
+      "name": "SAFARI 15 Ltrs Denim Blue",
+      "description": "SAFARI 15 Ltrs Denim Blue Casual/School/College Backpack",
+      "assertUrl": [
+        "https://google.com/DenimBlue.jpg"
+      ],
+      "thumbnail": "https://google.com/DenimBlue.jpg",
+      "price": 300,
+      "currency": "euro",
+      "isActive": true,
+      "productId": 393083,
+      "createdDate": "2022-07-21T14:11:43.313Z",
+      "updatedDate": "2022-07-21T14:11:43.313Z"
+    }
+  ]

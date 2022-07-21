@@ -1,0 +1,71 @@
+type User {
+    Id: Int!
+    firstName:String!
+    lastName: String
+    email:String!
+    mobileNo:String!
+    address:String!
+  }
+ type product{
+  productId: Int!
+  type: String!
+  name: String!
+  description: String!
+  assertUrl:[String!]
+  thumbnail: String!
+  price: Float!
+  currency: String!
+  isActive:Boolean!
+  createdDate: String!
+  updatedDate: String!
+ }
+ type productInfo{
+  productDetails:product!
+  qty:Int!
+ }
+ type isProductExist{
+    productId: Int!
+    status: Boolean!
+ }
+
+ type cartProduct{
+  Id:Int!
+  userId:Int!
+  productId:Int!
+  quantity:Int!
+ }
+
+type Mutation {
+  addUser(userInput:UserInput): [User!]
+  createProduct(productInput:ProductInput):[product!]
+  addToCart(userId:Int! productId:Int! quantity:Int!):[cartProduct!]
+  editProductQuantity(productId:Int! quantity:Int! userId:Int!):[cartProduct!]
+  deleteCardItem(productId:Int!):[cartProduct!]
+}
+
+input UserInput {
+  firstName: String!
+  lastName: String!
+  email:String!
+  mobileNo:String!
+  address:String!
+}
+
+input ProductInput{
+  type: String!
+  name: String!
+  description: String!
+  assertUrl:[String!]
+  thumbnail: String!
+  price: Float!
+  currency: String!
+  isActive:Boolean = true
+ }
+
+type Query {
+  getUserById(id: Int!): User!
+  searchUser(firstName:String=null): [User!]
+  searchProduct(isActive: Boolean=true filterText: String=null): [product]
+  getCartItemsByUserId(userId:Int! isActive: Boolean=true):[productInfo]
+  checkProductIsExist(productId:Int!):isProductExist!
+}

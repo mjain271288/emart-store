@@ -1,0 +1,6 @@
+query{
+  checkProductIsExist(productId:{{{productId}}}){
+    productId
+    status
+  }
+}

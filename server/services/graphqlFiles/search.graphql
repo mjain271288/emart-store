@@ -1,0 +1,14 @@
+query{
+  searchProduct(filterText:"{{{filterText}}}")
+  {
+    name
+    type
+    productId
+    description
+    assertUrl
+    thumbnail
+    price
+    currency
+    isActive
+  }
+}
